@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <g id="vuesax_linear_password-check" data-name="vuesax/linear/password-check" transform="translate(-556 -188)">
+    <g id="password-check" transform="translate(556 188)">
+      <path id="Vector" d="M7.1,12.5H4.167a9.958,9.958,0,0,1-1.383-.075C.592,12.183,0,11.15,0,8.333V4.167C0,1.35.592.317,2.783.075A9.958,9.958,0,0,1,4.167,0H7.05" transform="translate(2.083 3.75)" fill="none" stroke="#3d174d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <path id="Vector-2" data-name="Vector" d="M0,0H1.233A9.958,9.958,0,0,1,2.617.075C4.808.317,5.4,1.35,5.4,4.167V8.333c0,2.817-.592,3.85-2.783,4.092a9.958,9.958,0,0,1-1.383.075H0" transform="translate(12.517 3.75)" fill="none" stroke="#3d174d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <path id="Vector-3" data-name="Vector" d="M0,0V16.667" transform="translate(12.5 1.667)" fill="none" stroke="#3d174d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <path id="Vector-4" data-name="Vector" d="M.495.5H.5" transform="translate(8.751 9.5)" fill="none" stroke="#c858ba" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <path id="Vector-5" data-name="Vector" d="M.495.5H.5" transform="translate(5.418 9.5)" fill="none" stroke="#c858ba" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <path id="Vector-6" data-name="Vector" d="M0,0H20V20H0Z" transform="translate(20 20) rotate(180)" fill="none" opacity="0"/>
+    </g>
+  </g>
+</svg>

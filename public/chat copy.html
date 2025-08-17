@@ -1,0 +1,185 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>One-to-One Chat</title>
+</head>
+<body>
+  <h1>One-to-One Chat</h1>
+  <label>Your User ID:</label>
+  <input id="myId" type="number"><br><br>
+  <label>Receiver ID:</label>
+  <input id="receiverId" type="number"><br><br>
+  <textarea id="messageBox" placeholder="Type a message"></textarea><br>
+  <button id="sendBtn">Send</button>
+
+  <h3>Messages:</h3>
+  <div id="messages"></div>
+
+
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+<script>
+    const socket = io('http://localhost:3000');
+
+    document.getElementById('myId').addEventListener('change', () => {
+        const myId = Number(document.getElementById('myId').value);
+        socket.emit('register', myId);
+    });
+
+    document.getElementById('sendBtn').addEventListener('click', () => {
+        const senderId = Number(document.getElementById('myId').value);
+        const receiverId = Number(document.getElementById('receiverId').value);
+        const content = document.getElementById('messageBox').value;
+
+        socket.emit('private_message', { senderId, receiverId, content });
+        document.getElementById('messageBox').value = '';
+    });
+
+    socket.on('new_message', (msg) => {
+        const myId = Number(document.getElementById('myId').value);
+        const senderLabel = msg.senderId === myId ? 'You' : msg.senderId;
+        const color = msg.senderId === myId ? 'blue' : 'black';
+
+        document.getElementById('messages').innerHTML +=
+            `<p style="color:${color};"><b>${senderLabel}:</b> ${msg.content}</p>`;
+    });
+</script>
+
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One-to-One Chat</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Arial, sans-serif; background: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        .chat-container {
+            width: 100%;
+            max-width: 600px;
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 90vh;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .chat-header {
+            background: #0084ff;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .chat-box {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        .message {
+            max-width: 75%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 15px;
+            word-wrap: break-word;
+        }
+        .sent {
+            align-self: flex-end;
+            background: #0084ff;
+            color: white;
+            border-bottom-right-radius: 0;
+        }
+        .received {
+            align-self: flex-start;
+            background: #e4e6eb;
+            color: black;
+            border-bottom-left-radius: 0;
+        }
+        .chat-input {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+        }
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            outline: none;
+            font-size: 16px;
+        }
+        .chat-input button {
+            background: #0084ff;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            color: white;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+        .chat-input button:hover {
+            background: #006fdd;
+        }
+        @media (max-width: 600px) {
+            .chat-container { height: 100vh; border-radius: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <i class="fa-solid fa-comments"></i> One-to-One Chat
+        </div>
+        <div id="chat-box" class="chat-box"></div>
+        <div class="chat-input">
+            <input id="messageInput" type="text" placeholder="Type your message...">
+            <button id="sendBtn"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- <script src="/socket.io/socket.io.js"></script> -->
+     <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script>
+        const socket = io();
+
+        const chatBox = document.getElementById("chat-box");
+        const messageInput = document.getElementById("messageInput");
+        const sendBtn = document.getElementById("sendBtn");
+
+        const senderId = prompt("Enter your user ID:");
+        const receiverId = prompt("Enter receiver user ID:");
+
+        socket.emit("register", senderId);
+
+        socket.on("receiveMessage", (data) => {
+            const msgDiv = document.createElement("div");
+            msgDiv.classList.add("message", "received");
+            msgDiv.innerText = data.message;
+            chatBox.appendChild(msgDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        });
+
+        sendBtn.addEventListener("click", sendMessage);
+        messageInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") sendMessage();
+        });
+
+        function sendMessage() {
+            const message = messageInput.value.trim();
+            if (message === "") return;
+            socket.emit("private_message", { senderId, receiverId, message });
+            const msgDiv = document.createElement("div");
+            msgDiv.classList.add("message", "sent");
+            msgDiv.innerText = message;
+            chatBox.appendChild(msgDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+            messageInput.value = "";
+        }
+    </script>
+</body>
+</html>
+

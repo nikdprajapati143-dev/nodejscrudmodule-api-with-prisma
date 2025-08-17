@@ -1,0 +1,60 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  // output   = "../generated/prisma"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                  Int                  @id @default(autoincrement())
+  name                String
+  email               String               @unique
+  password            String
+  createdAt           DateTime             @default(now())
+  profileImage        String?
+  tokens              Token[] // 1:N relationship
+  passwordResetTokens PasswordResetToken[]
+  messagesSent        Message[]            @relation("MessagesSent")
+  messagesReceived    Message[]            @relation("MessagesReceived")
+}
+
+model Message {
+  id              Int      @id @default(autoincrement())
+  content         String
+  senderId        Int
+  receiverId      Int
+  sender          User     @relation("MessagesSent", fields: [senderId], references: [id])
+  receiver        User     @relation("MessagesReceived", fields: [receiverId], references: [id])
+  seen           Boolean  @default(false)
+  seenAt         DateTime?
+  createdAt       DateTime @default(now())
+}
+
+model Token {
+  id        Int      @id @default(autoincrement())
+  token     String   @unique
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+}
+
+//Password Reset Token
+model PasswordResetToken {
+  id        Int      @id @default(autoincrement())
+  token     String   @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    Int
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}

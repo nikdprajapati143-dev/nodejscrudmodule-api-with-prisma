@@ -1,0 +1,114 @@
+<!-- <!DOCTYPE html>
+<html>
+<head><title>Success</title></head>
+<body>
+  <div style="text-align: center;">
+    <h2>Password Reset Successfully!</h2>
+    <a href="<%= process.env.FRONTEND_URL %>">Login Now</a>
+  </div>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <title>Password Reset</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/assets/images/logo/logo-image.png" sizes="16x16">
+
+    <!-- Fonts and Icons -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700" rel="stylesheet">
+    <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link href="/assets/common/css/app.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/common/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/common/css/icons.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/common/css/style.css" rel="stylesheet" type="text/css">
+
+    <style>
+        html body.bg-full-screen-image {
+            background: #F2F2F2;
+        }
+
+        .card {
+            background: #FFFFFF;
+            border: 1px solid #E6E6E6;
+            border-radius: 4px;
+        }
+
+        .card-title {
+            margin-top: 20px;
+        }
+
+        .card-title img {
+            width: 100px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-body h3 {
+            color: #333333;
+            font-size: 24px;
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+
+        .card-body p {
+            color: #666666;
+            font-size: 14px;
+            margin-top: 0;
+        }
+
+        .socialIcon {
+            font-size: 24px;
+        }
+
+        .flexbox-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body class="vertical-layout vertical-menu-modern 1-column bg-full-screen-image menu-expanded blank-page blank-page">
+    <div class="app-content content">
+        <div class="content-wrapper">
+            <div class="content-header row"></div>
+            <div class="content-body">
+                <section class="flexbox-container">
+                    <div class="col-md-4 col-10 box-shadow-2 p-0">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title text-center">
+                                    <img src="<%= logoUrl %>" class="img-fluid mx-auto d-block" alt="LOGO">
+                                </div>
+                                <div class="card-body text-center">
+                                    <h3><%= message %></h3>
+                                    <p>Please access your account.</p>
+                                </div>
+                                <hr>
+                                <p class="socialIcon card-text text-center pt-2 pb-2"></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

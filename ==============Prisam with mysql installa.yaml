@@ -1,0 +1,7 @@
+==============Prisam with mysql installation===========
+npm init -y
+npm install express
+npm install prisma --save-dev
+npm install @prisma/client @prisma/extension-accelerate
+npx prisma init --datasource-provider mysql
+npx prisma generate

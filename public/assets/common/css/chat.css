@@ -1,0 +1,261 @@
+.card-body {
+    height: 75vh;
+    overflow-y: hidden;
+}
+.chat{
+    padding-bottom: 90px;
+}
+/* chat header css  */
+.chat .chat-header {
+    padding: 1px 19px;
+    border-bottom: 2px solid #f4f7f6;
+}
+
+.chat .chat-header img {
+    float: left;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-bottom: 5px;
+
+}
+
+.chat .chat-header .chat-about {
+    float: left;
+    padding-left: 10px;
+}
+
+.card-body img {
+    width: 200px;
+}
+
+
+
+.chat .chat-history {
+    padding: 20px;
+    border-bottom: 2px solid #fff;
+}
+
+.chat .chat-history ul {
+    padding: 0;
+}
+
+.chat .chat-history ul li {
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.chat .chat-history ul li:last-child {
+    margin-bottom: 0px;
+}
+
+.chat .chat-history .message-data {
+    margin-bottom: 15px;
+}
+
+.chat .chat-history .message-data img {
+    border-radius: 40px;
+    width: 40px;
+}
+
+.chat .chat-history .message-data-time {
+    color: #434651;
+    padding-left: 6px;
+}
+
+.chat .chat-history .message {
+    color: #444;
+    padding: 6px 12px;
+    line-height: 26px;
+    font-size: 16px;
+    border-radius: 7px;
+    display: inline-block;
+    position: relative;
+}
+
+.chat .chat-history .message:after {
+    bottom: 100%;
+    left: 30%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-bottom-color: #fff;
+    border-width: 10px;
+    margin-left: -10px;
+}
+
+.chat .chat-history .my-message {
+    background: #efefef;
+}
+
+.chat .chat-history .my-message:after {
+    bottom: 100%;
+    left: 30px;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-bottom-color: #efefef;
+    border-width: 10px;
+    margin-left: -10px;
+}
+
+.chat .chat-history .other-message {
+    background: #e8f1f3;
+    text-align: right;
+}
+
+.chat .chat-history .other-message:after {
+    border-bottom-color: #e8f1f3;
+    left: 93%;
+}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+/* chat header css end  */
+/* chat history css start  */
+.chat-history::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px #0a4bb7;
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+.chat-history::-webkit-scrollbar
+{
+	width: 8px;
+	background-color: #F5F5F5;
+}
+
+.chat-history::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #0a4bb7;
+}
+
+.chat-history {
+    overflow-y: auto;
+}
+
+.card {
+    background: #fff;
+    transition: .5s;
+    border: 0;
+    margin-bottom: 30px;
+    border-radius: .55rem;
+    position: relative;
+    width: 100%;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
+}
+
+/* chat history css end  */
+/* chat massage css  */
+.chat .chat-message {
+    bottom: 0px;
+    padding: 5px;
+    background: #fff;
+}
+
+.chat-message #msg_text {
+    border: 2px solid #0a4bb7 !important;
+    border-radius: 10px !important;
+    box-shadow: none !important;
+    padding: 10px !important;
+
+}
+
+.chat-message .input-group-prepend {
+    display: flex;
+    align-items: center;
+}
+
+.chat-message .send-btn .input-group-text {
+    border: 2px solid #0a4bb7 !important;
+    border-radius: 10px !important;
+    margin-left: 5px;
+    cursor: pointer;
+    background-color: white;
+    height: 37px !important;
+}
+
+.chat-message .send-btn .input-group-text i {
+    color: #0a4bb7;
+
+}
+
+.chat-message .input-group {
+    display: flex;
+    align-items: center;
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+/* Styling for other messages (received messages) */
+.other-message {
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    padding: 10px;
+    max-width: 400px;
+}
+
+/* Styling for the current user's messages */
+.my-message {
+    background-color: #0a4bb7;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    max-width: 400px;
+}
+
+/* Chat image container */
+.chat-image-container {
+    position: relative;
+    width: 100%;
+}
+
+
+/* Add padding for the pin icon */
+.input-group .form-control {
+    padding-right: 100px;
+    /* Prevent overlap with pin icon and preview */
+}
+
+.loader {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #0a4bb7;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    margin: auto;
+    /* Center inside preview */
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
